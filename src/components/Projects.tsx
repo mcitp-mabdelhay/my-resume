@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -48,34 +49,74 @@ const itemVariants = {
 };
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    projects.forEach(p => {
+      p.tech.split(',').forEach(t => tags.add(t.trim()));
+    });
+    return ['All', ...Array.from(tags).sort()];
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'All') return projects;
+    return projects.filter(p => p.tech.includes(activeFilter));
+  }, [activeFilter]);
+
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="projects" className="snap-start scroll-mt-20 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
-        <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-12 tracking-tight text-gray-900 dark:text-white">Selected Projects</motion.h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div 
-              key={index} 
-              variants={itemVariants}
-              className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md"
+        <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-8 tracking-tight text-gray-900 dark:text-white">Selected Projects</motion.h2>
+        
+        <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-12">
+          {allTags.map(tag => (
+            <button
+              key={tag}
+              onClick={() => setActiveFilter(tag)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === tag
+                  ? 'bg-black text-white dark:bg-white dark:text-black shadow-md'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 border border-transparent'
+              }`}
             >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                <ArrowUpRight className="text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" size={24} />
-              </div>
-              <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">{project.tech}</p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                {project.description}
-              </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">{project.period}</p>
-            </motion.div>
+              {tag}
+            </button>
           ))}
-        </div>
+        </motion.div>
+
+        <motion.div layout className="grid md:grid-cols-2 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div 
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                key={project.title} 
+                className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md h-full flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                    <ArrowUpRight className="text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" size={24} />
+                  </div>
+                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">{project.tech}</p>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                </div>
+                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider mt-auto">{project.period}</p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </motion.div>
     </section>
   );

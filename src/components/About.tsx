@@ -21,7 +21,7 @@ const skillCategories = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-900/50 rounded-3xl my-12 border border-transparent dark:border-gray-800 transition-colors duration-300">
+    <section id="about" className="snap-start scroll-mt-20 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-900/50 rounded-3xl my-12 border border-transparent dark:border-gray-800 transition-colors duration-300">
       <div className="grid md:grid-cols-2 gap-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
