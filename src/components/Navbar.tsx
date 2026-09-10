@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon } from 'lucide-react';
 
 const searchIndex = [
   { title: 'Idle Lands', category: 'Project', href: '#projects' },
@@ -24,8 +24,25 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      setIsDark(true);
+    }
+  };
 
   const links = [
     { name: 'About', href: '#about' },
@@ -81,12 +98,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+    <nav className="fixed w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 group">
-            <img src="/favicon.svg" alt="Logo" className="w-8 h-8 rounded-lg shadow-sm group-hover:opacity-80 transition-opacity" />
-            <span className="flex-shrink-0 font-semibold text-xl tracking-tighter text-gray-900 group-hover:text-gray-700 transition-colors">
+            <img src="/favicon.svg" alt="Logo" className="w-8 h-8 rounded-lg shadow-sm group-hover:opacity-80 transition-opacity dark:invert" />
+            <span className="flex-shrink-0 font-semibold text-xl tracking-tighter text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
               M. Abdelhay
             </span>
           </a>
@@ -94,14 +111,22 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link) => (
-              <a key={link.name} href={link.href} className="text-gray-600 hover:text-black transition-colors text-sm font-medium">
+              <a key={link.name} href={link.href} className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
                 {link.name}
               </a>
             ))}
+
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             
             {/* Desktop Search */}
             <div className="relative ml-4" ref={searchContainerRef}>
-              <div className={`flex items-center bg-gray-50 rounded-full px-3 py-1.5 border transition-all ${isSearchFocused ? 'border-gray-300 ring-2 ring-gray-100 w-64' : 'border-transparent w-56'}`}>
+              <div className={`flex items-center bg-gray-50 dark:bg-gray-900 rounded-full px-3 py-1.5 border transition-all ${isSearchFocused ? 'border-gray-300 dark:border-gray-700 ring-2 ring-gray-100 dark:ring-gray-800 w-64' : 'border-transparent dark:border-transparent w-56'}`}>
                 <Search size={16} className="text-gray-400 mr-2 flex-shrink-0" />
                 <input 
                   type="text" 
@@ -121,28 +146,35 @@ export default function Navbar() {
               </div>
               
               {isSearchFocused && searchQuery && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-white border border-gray-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                <div className="absolute top-full right-0 mt-2 w-72 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl rounded-2xl overflow-hidden z-50">
                    {filteredResults.length > 0 ? (
                      <ul className="py-2">
                        {filteredResults.map((result, idx) => (
                          <li key={idx}>
-                           <a href={result.href} onClick={handleResultClick} className="block px-4 py-2.5 hover:bg-gray-50 transition-colors group">
-                             <div className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">{result.title}</div>
-                             <div className="text-xs text-gray-500 mt-0.5">{result.category}</div>
+                           <a href={result.href} onClick={handleResultClick} className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                             <div className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{result.title}</div>
+                             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{result.category}</div>
                            </a>
                          </li>
                        ))}
                      </ul>
                    ) : (
-                     <div className="px-4 py-6 text-sm text-gray-500 text-center">No results found for "{searchQuery}"</div>
+                     <div className="px-4 py-6 text-sm text-gray-500 dark:text-gray-400 text-center">No results found for "{searchQuery}"</div>
                    )}
                 </div>
               )}
             </div>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 hover:text-black">
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun size={24} /> : <Moon size={24} />}
+            </button>
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -151,10 +183,10 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-1 shadow-lg max-h-[80vh] overflow-y-auto">
+        <div className="md:hidden bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 px-4 pt-2 pb-6 space-y-1 shadow-lg max-h-[80vh] overflow-y-auto">
           {/* Mobile Search */}
-          <div className="mb-4 pb-4 border-b border-gray-100">
-            <div className="flex items-center bg-gray-50 rounded-xl px-3 py-2 border border-gray-100 focus-within:border-gray-300 transition-colors">
+          <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
+            <div className="flex items-center bg-gray-50 dark:bg-gray-900 rounded-xl px-3 py-2 border border-gray-100 dark:border-gray-800 focus-within:border-gray-300 dark:focus-within:border-gray-700 transition-colors">
               <Search size={18} className="text-gray-400 mr-2" />
               <input 
                 type="text" 
@@ -165,20 +197,20 @@ export default function Navbar() {
               />
             </div>
             {searchQuery && (
-              <div className="mt-2 bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
+              <div className="mt-2 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
                 {filteredResults.length > 0 ? (
                   <ul className="py-1">
                     {filteredResults.map((result, idx) => (
                       <li key={idx}>
-                        <a href={result.href} onClick={handleResultClick} className="block px-3 py-2 hover:bg-gray-50 border-b border-gray-50 last:border-0">
-                          <div className="text-sm font-semibold text-gray-900">{result.title}</div>
-                          <div className="text-xs text-gray-500">{result.category}</div>
+                        <a href={result.href} onClick={handleResultClick} className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-50 dark:border-gray-800 last:border-0">
+                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{result.title}</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">{result.category}</div>
                         </a>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="px-4 py-4 text-sm text-gray-500 text-center">No results found</div>
+                  <div className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">No results found</div>
                 )}
               </div>
             )}
@@ -189,7 +221,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors"
+              className="block px-3 py-3 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900 rounded-xl transition-colors"
             >
               {link.name}
             </a>

@@ -22,11 +22,11 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-gray-200">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans selection:bg-gray-200 dark:selection:bg-gray-800 transition-colors duration-300">
       <Cursor />
       <BackToTop />
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-black origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-1 bg-black dark:bg-white origin-left z-[60]"
         style={{ scaleX }}
       />
       <Navbar />

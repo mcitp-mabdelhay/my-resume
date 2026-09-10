@@ -66,11 +66,11 @@ export default function Cursor() {
         }}
       >
         <motion.div 
-          className="w-full h-full rounded-full border border-gray-400 bg-gray-400/10 backdrop-blur-[1px]"
+          className="w-full h-full rounded-full border border-gray-400 dark:border-gray-500 bg-gray-400/10 dark:bg-gray-500/10 backdrop-blur-[1px]"
           animate={{
             scale: isHovering ? 1.6 : 1,
-            backgroundColor: isHovering ? 'rgba(0, 0, 0, 0.05)' : 'rgba(156, 163, 175, 0.1)',
-            borderColor: isHovering ? 'rgba(0, 0, 0, 0.3)' : 'rgba(156, 163, 175, 0.8)',
+            backgroundColor: isHovering ? 'rgba(156, 163, 175, 0.2)' : 'rgba(156, 163, 175, 0.1)',
+            borderColor: isHovering ? 'rgba(156, 163, 175, 0.8)' : 'rgba(156, 163, 175, 0.5)',
           }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         />
@@ -78,7 +78,7 @@ export default function Cursor() {
       
       {/* Inner Fast Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-gray-900 rounded-full pointer-events-none z-[100] hidden sm:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full pointer-events-none z-[100] hidden sm:block"
         style={{
           x: cursorX,
           y: cursorY,

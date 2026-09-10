@@ -21,7 +21,7 @@ const skillCategories = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 rounded-3xl my-12">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-900/50 rounded-3xl my-12 border border-transparent dark:border-gray-800 transition-colors duration-300">
       <div className="grid md:grid-cols-2 gap-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -29,11 +29,11 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <h2 className="text-3xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">About Me</h2>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
             With over a decade of experience spanning software engineering, solution architecture, and data science, I build high-availability and scalable applications using hybrid methods. I hold a Master's in Computer Science with a minor in Deep Learning and NLP from Cairo University.
           </p>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
             I am passionate about creating robust systems, developing REST APIs, and implementing full-stack web applications that solve complex business challenges.
           </p>
         </motion.div>
@@ -47,10 +47,10 @@ export default function About() {
         >
           {skillCategories.map((category) => (
             <div key={category.title}>
-              <h3 className="font-semibold text-gray-900 mb-4">{category.title}</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-4">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-gray-600 shadow-sm">
+                  <span key={skill} className="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-gray-600 dark:text-gray-300 shadow-sm transition-colors">
                     {skill}
                   </span>
                 ))}

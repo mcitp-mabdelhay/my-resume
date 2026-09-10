@@ -7,7 +7,7 @@ interface SkeletonProps {
 export function Skeleton({ className = '' }: SkeletonProps) {
   return (
     <motion.div
-      className={`bg-gray-200 rounded-2xl ${className}`}
+      className={`bg-gray-200 dark:bg-gray-800 rounded-2xl ${className}`}
       animate={{ opacity: [0.4, 0.8, 0.4] }}
       transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
     />

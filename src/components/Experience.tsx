@@ -97,16 +97,16 @@ export default function Experience() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Career Timeline</h2>
-          <p className="text-gray-600">A look at my professional milestones and skill growth over time.</p>
+          <h2 className="text-3xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">Career Timeline</h2>
+          <p className="text-gray-600 dark:text-gray-400">A look at my professional milestones and skill growth over time.</p>
         </div>
         
-        <div className="relative border-l border-gray-200 ml-3 md:ml-0 md:pl-0">
+        <div className="relative border-l border-gray-200 dark:border-gray-800 ml-3 md:ml-0 md:pl-0">
           {experiences.map((exp, index) => (
             <div key={exp.id} className={`mb-10 ml-8 md:ml-12 ${index === experiences.length - 1 ? 'mb-0' : ''}`}>
               <div 
-                className={`absolute w-10 h-10 rounded-full flex items-center justify-center -left-5 md:-left-5 bg-white border-2 cursor-pointer transition-colors z-10 ${
-                  activeId === exp.id ? 'border-black text-black shadow-md' : 'border-gray-200 text-gray-400 hover:border-gray-400'
+                className={`absolute w-10 h-10 rounded-full flex items-center justify-center -left-5 md:-left-5 bg-white dark:bg-gray-950 border-2 cursor-pointer transition-colors z-10 ${
+                  activeId === exp.id ? 'border-black dark:border-white text-black dark:text-white shadow-md' : 'border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400 dark:hover:border-gray-600'
                 }`}
                 onClick={() => toggleExperience(exp.id)}
               >
@@ -114,29 +114,29 @@ export default function Experience() {
               </div>
 
               <div 
-                className={`bg-white rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
-                  activeId === exp.id ? 'border-gray-300 shadow-md' : 'border-gray-100 hover:border-gray-300 hover:bg-gray-50'
+                className={`bg-white dark:bg-gray-900 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
+                  activeId === exp.id ? 'border-gray-300 dark:border-gray-600 shadow-md' : 'border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                 }`}
                 onClick={() => toggleExperience(exp.id)}
               >
                 <div className="p-6 md:p-8">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                    <h3 className={`text-xl font-bold ${activeId === exp.id ? 'text-black' : 'text-gray-800'}`}>
+                    <h3 className={`text-xl font-bold ${activeId === exp.id ? 'text-black dark:text-white' : 'text-gray-800 dark:text-gray-300'}`}>
                       {exp.role}
                     </h3>
                     <div className="flex items-center gap-2 mt-2 md:mt-0">
-                      <span className="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
                         {exp.period}
                       </span>
                       <motion.div
                         animate={{ rotate: activeId === exp.id ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown size={20} className="text-gray-400" />
+                        <ChevronDown size={20} className="text-gray-400 dark:text-gray-500" />
                       </motion.div>
                     </div>
                   </div>
-                  <p className="text-lg text-gray-600 font-medium">{exp.company} &middot; {exp.location}</p>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">{exp.company} &middot; {exp.location}</p>
                 </div>
 
                 <AnimatePresence>
@@ -147,18 +147,18 @@ export default function Experience() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 border-t border-gray-100 mt-2">
-                        <ul className="list-disc list-outside ml-4 mt-6 mb-8 space-y-3 text-gray-600">
+                      <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 border-t border-gray-100 dark:border-gray-800 mt-2">
+                        <ul className="list-disc list-outside ml-4 mt-6 mb-8 space-y-3 text-gray-600 dark:text-gray-400">
                           {exp.description.map((item, i) => (
                             <li key={i} className="leading-relaxed">{item}</li>
                           ))}
                         </ul>
                         
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">Skills & Technologies</h4>
+                          <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3">Skills & Technologies</h4>
                           <div className="flex flex-wrap gap-2">
                             {exp.skills.map((skill, i) => (
-                              <span key={i} className="px-3 py-1.5 bg-black text-white rounded-lg text-sm font-medium shadow-sm">
+                              <span key={i} className="px-3 py-1.5 bg-black dark:bg-white text-white dark:text-black rounded-lg text-sm font-medium shadow-sm transition-colors">
                                 {skill}
                               </span>
                             ))}

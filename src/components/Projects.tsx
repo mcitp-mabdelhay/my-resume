@@ -56,23 +56,23 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
-        <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-12 tracking-tight">Selected Projects</motion.h2>
+        <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-12 tracking-tight text-gray-900 dark:text-white">Selected Projects</motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div 
               key={index} 
               variants={itemVariants}
-              className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-100 shadow-sm hover:shadow-md"
+              className="group p-8 rounded-3xl bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md"
             >
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{project.title}</h3>
-                <ArrowUpRight className="text-gray-400 group-hover:text-blue-600 transition-colors" size={24} />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                <ArrowUpRight className="text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" size={24} />
               </div>
-              <p className="text-sm font-medium text-blue-600 mb-4">{project.tech}</p>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">{project.tech}</p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                 {project.description}
               </p>
-              <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{project.period}</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">{project.period}</p>
             </motion.div>
           ))}
         </div>

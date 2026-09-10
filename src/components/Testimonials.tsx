@@ -41,7 +41,7 @@ export default function Testimonials() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="bg-gray-900 rounded-3xl p-8 md:p-16 text-white shadow-xl"
+        className="bg-gray-900 rounded-3xl p-8 md:p-16 text-white shadow-xl dark:bg-gray-900/50 dark:border dark:border-gray-800 transition-colors"
       >
         <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-12 tracking-tight text-center">Recommendations</motion.h2>
         <div className="grid md:grid-cols-2 gap-12">
