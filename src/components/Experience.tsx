@@ -88,22 +88,41 @@ export default function Experience() {
     setActiveId(activeId === id ? 0 : id);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
     <section id="experience" className="snap-start scroll-mt-20 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        variants={containerVariants}
       >
-        <div className="mb-12">
+        <motion.div variants={itemVariants} className="mb-12">
           <h2 className="text-3xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">Career Timeline</h2>
           <p className="text-gray-600 dark:text-gray-400">A look at my professional milestones and skill growth over time.</p>
-        </div>
+        </motion.div>
         
         <div className="relative border-l border-gray-200 dark:border-gray-800 ml-3 md:ml-0 md:pl-0">
           {experiences.map((exp, index) => (
-            <div key={exp.id} className={`mb-10 ml-8 md:ml-12 ${index === experiences.length - 1 ? 'mb-0' : ''}`}>
+            <motion.div variants={itemVariants} key={exp.id} className={`mb-10 ml-8 md:ml-12 ${index === experiences.length - 1 ? 'mb-0' : ''}`}>
               <div 
                 className={`absolute w-10 h-10 rounded-full flex items-center justify-center -left-5 md:-left-5 bg-white dark:bg-gray-950 border-2 cursor-pointer transition-colors z-10 ${
                   activeId === exp.id ? 'border-black dark:border-white text-black dark:text-white shadow-md' : 'border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400 dark:hover:border-gray-600'
@@ -169,7 +188,7 @@ export default function Experience() {
                   )}
                 </AnimatePresence>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>
