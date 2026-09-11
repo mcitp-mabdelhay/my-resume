@@ -22,7 +22,7 @@ export default function Hero() {
             <Mail size={18} />
             Get in touch
           </a>
-          <a href="/resume.pdf" download className="px-6 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-sm">
+          <a href="/Mohammed_Abdelhay_Resume.pdf" download className="px-6 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-sm">
             <FileText size={18} />
             Download CV
           </a>
