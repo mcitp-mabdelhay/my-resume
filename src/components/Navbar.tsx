@@ -106,15 +106,15 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 group">
             <img src="/favicon.svg" alt="Logo" className="w-8 h-8 rounded-lg shadow-sm group-hover:opacity-80 transition-opacity dark:invert" />
-            <span className="flex-shrink-0 font-semibold text-xl tracking-tighter text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+            <span className="flex-shrink-0 whitespace-nowrap font-semibold text-xl tracking-tighter text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
               M. Abdelhay
             </span>
           </a>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {links.map((link) => (
-              <a key={link.name} href={link.href} className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+              <a key={link.name} href={link.href} className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm font-medium whitespace-nowrap">
                 {link.name}
               </a>
             ))}
@@ -169,7 +169,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={toggleTheme}
               className="p-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
@@ -186,7 +186,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 px-4 pt-2 pb-6 space-y-1 shadow-lg max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 px-4 pt-2 pb-6 space-y-1 shadow-lg max-h-[80vh] overflow-y-auto">
           {/* Mobile Search */}
           <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-center bg-gray-50 dark:bg-gray-900 rounded-xl px-3 py-2 border border-gray-100 dark:border-gray-800 focus-within:border-gray-300 dark:focus-within:border-gray-700 transition-colors">
