@@ -11,6 +11,8 @@ import { SectionSkeleton } from './components/Skeleton';
 
 const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
+const Education = lazy(() => import('./components/Education'));
+const Certifications = lazy(() => import('./components/Certifications'));
 const Publications = lazy(() => import('./components/Publications'));
 const Projects = lazy(() => import('./components/Projects'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
@@ -24,13 +26,15 @@ export default function App() {
     restDelta: 0.001
   });
 
-  const sectionIds = useMemo(() => ['hero', 'about', 'experience', 'publications', 'projects', 'testimonials', 'contact'], []);
+  const sectionIds = useMemo(() => ['hero', 'about', 'experience', 'education', 'certifications', 'publications', 'projects', 'testimonials', 'contact'], []);
   const activeSection = useActiveSection(sectionIds);
 
   const sectionMeta: Record<string, { title: string, description: string }> = {
     hero: { title: 'Mohammed Abdelhay - Senior Solutions Architect', description: 'Portfolio of Mohammed Abdelhay, Senior Solutions Architect and Data Scientist.' },
     about: { title: 'About Me - Mohammed Abdelhay', description: 'Learn more about my background, skills, and expertise.' },
     experience: { title: 'Experience - Mohammed Abdelhay', description: 'Explore my professional journey and past roles.' },
+    education: { title: 'Education - Mohammed Abdelhay', description: 'My academic background and qualifications.' },
+    certifications: { title: 'Certifications - Mohammed Abdelhay', description: 'Professional credentials and verified achievements.' },
     publications: { title: 'Publications - Mohammed Abdelhay', description: 'Academic research and scientific contributions.' },
     projects: { title: 'Projects - Mohammed Abdelhay', description: 'View selected projects spanning deep learning, cloud architecture, and high-availability systems.' },
     testimonials: { title: 'Testimonials - Mohammed Abdelhay', description: 'Read recommendations from colleagues and clients.' },
@@ -61,6 +65,12 @@ export default function App() {
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <Experience />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Education />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Certifications />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <Publications />

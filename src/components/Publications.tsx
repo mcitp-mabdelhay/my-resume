@@ -4,59 +4,59 @@ import { BookOpen, ExternalLink, GraduationCap, FileText, Presentation, File, Qu
 
 const publications = [
   {
-    title: 'Self-Driving Car Path Planning Using Evolutionary Algorithm',
-    authors: 'Mohammed Abdelhay, Dr. Ahmed El-Bialy',
-    journal: 'Master\'s Thesis, Cairo University',
-    date: 'July 2021',
-    category: 'Thesis',
-    description: 'Developed an innovative evolutionary algorithm to optimize path planning and obstacle avoidance in simulated self-driving car environments, significantly reducing collision rates compared to traditional pathfinding heuristics.',
-    icon: GraduationCap,
-    link: '#',
-    bibtex: `@mastersthesis{abdelhay2021selfdriving,
-  title={Self-Driving Car Path Planning Using Evolutionary Algorithm},
-  author={Abdelhay, Mohammed and El-Bialy, Ahmed},
-  school={Cairo University},
-  year={2021},
+    title: 'A Comprehensive Review of Multimodal Deep Learning for Enhanced Medical Diagnostics',
+    authors: 'Aya M. Al-Zoghby, Ahmed I. Ebada, Aya S. Saleh, Mohammed Abdelhay, Wael A. Awad',
+    journal: 'CMC',
+    date: 'July 7, 2025',
+    category: 'Journal',
+    description: 'This review delves into the transformative potential of multimodal deep learning in healthcare. It explores how integrating diverse data sources like genomic profiles, radiological imaging, and histopathological slides can lead to more precise diagnostics and improved patient outcomes.',
+    icon: BookOpen,
+    link: 'https://www.techscience.com/cmc/v84n3/63164',
+    bibtex: `@article{alzoghby2025multimodal,
+  title={A Comprehensive Review of Multimodal Deep Learning for Enhanced Medical Diagnostics},
+  author={Al-Zoghby, Aya M. and Ebada, Ahmed Ismail and Saleh, Aya S. and Abdelhay, Mohammed and Awad, Wael A.},
+  journal={CMC},
+  year={2025},
   month={July}
 }`
   },
   {
-    title: 'Cloud-Native High Availability Architectures for Financial Services',
-    authors: 'Mohammed Abdelhay',
-    journal: 'Industry Whitepaper',
-    date: 'November 2023',
-    category: 'Whitepaper',
-    description: 'An in-depth analysis of modern cloud-native architectural patterns designed to ensure 99.999% uptime in transactional financial systems.',
-    icon: FileText,
-    link: '#',
-    bibtex: `@techreport{abdelhay2023cloudnative,
-  title={Cloud-Native High Availability Architectures for Financial Services},
-  author={Abdelhay, Mohammed},
-  institution={Industry Whitepaper},
+    title: 'Deep learning for Arabic healthcare: MedicalBot',
+    authors: 'Mohammed Abdelhay, et al.',
+    journal: 'Springer',
+    date: 'April 18, 2023',
+    category: 'Journal',
+    description: 'Outlines the development of MedicalBot: an Arabic question-answering system designed specifically for healthcare-related inquiries. MedicalBot is a transformer-based model trained on MAQA, our proposed largest healthcare corpus consisting of over 430k questions spanning 20 distinct medical specializations.',
+    icon: BookOpen,
+    link: 'https://link.springer.com/article/10.1007/s13278-023-01077-w',
+    bibtex: `@article{abdelhay2023medicalbot,
+  title={Deep learning for Arabic healthcare: MedicalBot},
+  author={Abdelhay, Mohammed and others},
+  journal={Springer},
   year={2023},
-  month={November}
+  month={April}
 }`
   },
   {
-    title: 'Optimizing Latency in Microservices with gRPC and Protocol Buffers',
+    title: 'MAQA: Medical Arabic Q&A dataset',
     authors: 'Mohammed Abdelhay, et al.',
-    journal: 'International Conference on Cloud Computing',
-    date: 'March 2022',
-    category: 'Conference',
-    description: 'Presented findings on reducing inter-service communication latency by migrating from REST/JSON to gRPC/Protobuf in large-scale deployments.',
-    icon: Presentation,
-    link: '#',
-    bibtex: `@inproceedings{abdelhay2022optimizing,
-  title={Optimizing Latency in Microservices with gRPC and Protocol Buffers},
+    journal: 'Harvard Dataverse',
+    date: 'August 1, 2022',
+    category: 'Dataset',
+    description: 'The largest Arabic Healthcare Q&A dataset as we know (MAQA) was collected from various websites. The dataset consists of more than 430k questions. We have made MAQA publicly available in order to facilitate further research within the academic community.',
+    icon: FileText,
+    link: 'https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/Y2JBEZ',
+    bibtex: `@misc{abdelhay2022maqa,
+  title={MAQA: Medical Arabic Q&A dataset},
   author={Abdelhay, Mohammed and others},
-  booktitle={International Conference on Cloud Computing},
+  publisher={Harvard Dataverse},
   year={2022},
-  month={March}
+  month={August}
 }`
   }
 ];
 
-const categories = ['All', 'Thesis', 'Journal', 'Conference', 'Whitepaper'];
+const categories = ['All', 'Journal', 'Dataset'];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -162,7 +162,9 @@ export default function Publications() {
                     <div className="flex items-center gap-2">
                       <BibtexButton bibtex={pub.bibtex} />
                       <a 
-                        href={pub.link} 
+                        href={pub.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline bg-blue-50 dark:bg-blue-900/30 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap"
                       >
                         View <span className="hidden sm:inline">Publication</span> <ExternalLink size={14} />
