@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 const Resume = lazy(() => import('./pages/Resume'));
 const IsometricHolds = lazy(() => import('./pages/IsometricHolds'));
 const AutoCar = lazy(() => import('./pages/AutoCar'));
+const AutoCarPrivacy = lazy(() => import('./pages/AutoCarPrivacy'));
+const AutoCarTerms = lazy(() => import('./pages/AutoCarTerms'));
 
 function PageLoader() {
   return (
@@ -20,6 +22,10 @@ export default function App() {
         <Route path="/" element={<Resume />} />
         <Route path="/isometric-holds" element={<IsometricHolds />} />
         <Route path="/auto-car" element={<AutoCar />} />
+        <Route path="/auto-car/privacy" element={<AutoCarPrivacy />} />
+        <Route path="/auto-car/privacy-policy" element={<AutoCarPrivacy />} />
+        <Route path="/auto-car/terms" element={<AutoCarTerms />} />
+        <Route path="/auto-car/terms-of-use" element={<AutoCarTerms />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

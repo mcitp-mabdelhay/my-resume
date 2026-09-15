@@ -121,6 +121,7 @@ export interface TranslationContent {
     quickLinks: string;
     resources: string;
     privacyPolicy: string;
+    termsOfUse: string;
     sourceCode: string;
     releaseNotes: string;
     copyright: string;
@@ -311,6 +312,7 @@ export const translations: Record<Language, TranslationContent> = {
       quickLinks: 'Navigation',
       resources: 'Resources',
       privacyPolicy: 'Privacy & Permissions',
+      termsOfUse: 'Terms of Use',
       sourceCode: 'GitHub Repository',
       releaseNotes: 'Release Notes (v1.1.0)',
       copyright: '© 2026 AutoTracker. Open source vehicle management companion.',
@@ -499,6 +501,7 @@ export const translations: Record<Language, TranslationContent> = {
       quickLinks: 'روابط سريعة',
       resources: 'المصادر والوثائق',
       privacyPolicy: 'سياسة الخصوصية والصلاحيات',
+      termsOfUse: 'شروط الاستخدام والخدمة',
       sourceCode: 'المستودع على GitHub',
       releaseNotes: 'سجل التحديثات (v1.1.0)',
       copyright: '© 2026 أوتو تراكِر. تطبيق مفتوح المصدر لإدارة وصيانة المركبات.',

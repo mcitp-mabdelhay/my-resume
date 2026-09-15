@@ -1,5 +1,6 @@
 import React from 'react';
-import { Heart, Shield, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Heart, Shield, FileText, Scale } from 'lucide-react';
 import type { Language, TranslationContent } from './translations';
 import { StoreBadges } from './StoreBadges';
 
@@ -143,13 +144,22 @@ export const Footer: React.FC<FooterProps> = ({ lang, onToggleLang, t }) => {
                 </a>
               </li>
               <li>
-                <a
-                  href="#security"
+                <Link
+                  to="/auto-car/privacy"
                   className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
                 >
                   <Shield className="w-3.5 h-3.5" />
                   <span>{t.footer.privacyPolicy}</span>
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/auto-car/terms"
+                  className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+                >
+                  <Scale className="w-3.5 h-3.5" />
+                  <span>{t.footer.termsOfUse}</span>
+                </Link>
               </li>
             </ul>
           </div>

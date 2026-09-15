@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: my-resume
-    image: mma1979/my-resume:v1.2.0
+    image: mma1979/my-resume:v1.3.3
     ports:
       - "${PORT:-3000}:3000"
     env_file:
