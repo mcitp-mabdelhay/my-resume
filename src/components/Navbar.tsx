@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, Search, Sun, Moon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const searchIndex = [
+  { title: 'Isometric Holds', category: 'Live App Subpage', href: '/isometric-holds' },
+  { title: 'AutoTracker (Auto-Car)', category: 'Live App Subpage', href: '/auto-car' },
   { title: 'Idle Lands', category: 'Project', href: '#projects' },
   { title: 'Labor Camps', category: 'Project', href: '#projects' },
   { title: 'Acumen', category: 'Project', href: '#projects' },
@@ -154,10 +157,17 @@ export default function Navbar() {
                      <ul className="py-2">
                        {filteredResults.map((result, idx) => (
                          <li key={idx}>
-                           <a href={result.href} onClick={handleResultClick} className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
-                             <div className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{result.title}</div>
-                             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{result.category}</div>
-                           </a>
+                           {result.href.startsWith('/') ? (
+                             <Link to={result.href} onClick={handleResultClick} className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                               <div className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{result.title}</div>
+                               <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{result.category}</div>
+                             </Link>
+                           ) : (
+                             <a href={result.href} onClick={handleResultClick} className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                               <div className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{result.title}</div>
+                               <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{result.category}</div>
+                             </a>
+                           )}
                          </li>
                        ))}
                      </ul>
@@ -205,10 +215,17 @@ export default function Navbar() {
                   <ul className="py-1">
                     {filteredResults.map((result, idx) => (
                       <li key={idx}>
-                        <a href={result.href} onClick={handleResultClick} className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-50 dark:border-gray-800 last:border-0">
-                          <div className="text-sm font-semibold text-gray-900 dark:text-white">{result.title}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{result.category}</div>
-                        </a>
+                        {result.href.startsWith('/') ? (
+                          <Link to={result.href} onClick={handleResultClick} className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-50 dark:border-gray-800 last:border-0">
+                            <div className="text-sm font-semibold text-gray-900 dark:text-white">{result.title}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">{result.category}</div>
+                          </Link>
+                        ) : (
+                          <a href={result.href} onClick={handleResultClick} className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-50 dark:border-gray-800 last:border-0">
+                            <div className="text-sm font-semibold text-gray-900 dark:text-white">{result.title}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">{result.category}</div>
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

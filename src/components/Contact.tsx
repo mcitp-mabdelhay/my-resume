@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import { z } from 'zod';
@@ -19,7 +19,7 @@ export default function Contact() {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
+    visible: { 
       opacity: 1,
       transition: {
         staggerChildren: 0.2
@@ -36,7 +36,7 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setErrors({});
     
@@ -45,7 +45,7 @@ export default function Contact() {
     if (!result.success) {
       const formattedErrors: Record<string, string> = {};
       result.error.issues.forEach((issue) => {
-        formattedErrors[issue.path[0]] = issue.message;
+        formattedErrors[String(issue.path[0])] = issue.message;
       });
       setErrors(formattedErrors);
       return;
