@@ -139,7 +139,7 @@ export const translations: Record<Language, TranslationContent> = {
       getApp: 'Download App',
     },
     hero: {
-      badge: '✨ AutoTracker v1.0 • Google Sheets Powered',
+      badge: '✨ AutoTracker v1.2.1 • Google Sheets Powered',
       titleLine1: 'Never Miss Your Car’s',
       titleHighlight: 'Maintenance Interval',
       titleLine2: 'Ever Again',
@@ -305,7 +305,7 @@ export const translations: Record<Language, TranslationContent> = {
       directDownload: 'Direct Download',
       comingSoon: 'Coming Soon',
       availableNow: 'Available Now',
-      latestRelease: 'Latest Release (v1.1.0)',
+      latestRelease: 'Latest Release (v1.2.1)',
     },
     footer: {
       tagline: 'Smart, privacy-first vehicle maintenance tracking powered by Google Sheets.',
@@ -314,7 +314,7 @@ export const translations: Record<Language, TranslationContent> = {
       privacyPolicy: 'Privacy & Permissions',
       termsOfUse: 'Terms of Use',
       sourceCode: 'GitHub Repository',
-      releaseNotes: 'Release Notes (v1.1.0)',
+      releaseNotes: 'Release Notes (v1.2.1)',
       copyright: '© 2026 AutoTracker. Open source vehicle management companion.',
     },
   },
@@ -328,7 +328,7 @@ export const translations: Record<Language, TranslationContent> = {
       getApp: 'تحميل التطبيق',
     },
     hero: {
-      badge: '✨ أوتو تراكِر v1.0 • مدعوم بمزامنة Google Sheets',
+      badge: '✨ أوتو تراكِر v1.2.1 • مدعوم بمزامنة Google Sheets',
       titleLine1: 'لا تفوّت موعد صيانة',
       titleHighlight: 'سيارتك الدورية',
       titleLine2: 'بعد اليوم أبدًا',
@@ -494,7 +494,7 @@ export const translations: Record<Language, TranslationContent> = {
       directDownload: 'تحميل مباشر',
       comingSoon: 'قريباً',
       availableNow: 'متاح الآن',
-      latestRelease: 'أحدث إصدار (v1.1.0)',
+      latestRelease: 'أحدث إصدار (v1.2.1)',
     },
     footer: {
       tagline: 'الحل الذكي والأكثر أماناً لمتابعة صيانة السيارات عبر Google Sheets.',
@@ -503,7 +503,7 @@ export const translations: Record<Language, TranslationContent> = {
       privacyPolicy: 'سياسة الخصوصية والصلاحيات',
       termsOfUse: 'شروط الاستخدام والخدمة',
       sourceCode: 'المستودع على GitHub',
-      releaseNotes: 'سجل التحديثات (v1.1.0)',
+      releaseNotes: 'سجل التحديثات (v1.2.1)',
       copyright: '© 2026 أوتو تراكِر. تطبيق مفتوح المصدر لإدارة وصيانة المركبات.',
     },
   },

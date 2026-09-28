@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { APK_RELEASES } from '../../data/isometric-holds/protocols';
+import { APK_RELEASES, GITHUB_RELEASES_URL } from '../../data/isometric-holds/protocols';
 import { StoreBadges } from './StoreBadges';
 import {
   Download,
@@ -12,6 +12,7 @@ import {
   ChevronDown,
   ChevronUp,
   Store,
+  ExternalLink,
 } from 'lucide-react';
 
 export const DownloadSection: React.FC = () => {
@@ -27,18 +28,18 @@ export const DownloadSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
             <Download size={14} />
-            <span>Direct Android Sideload & Stores</span>
+            <span>GitHub Releases & App Stores</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Install Isometric Holds on Android
           </h2>
           <p className="text-base sm:text-lg text-gray-400">
-            Free, open, and lightweight. Download the production release APK directly and start training in seconds.
+            Free, open, and lightweight. Download the production release APK directly from our GitHub release page and start training in seconds.
           </p>
         </div>
 
         {/* APK Download Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
           {APK_RELEASES.map((rel) => (
             <div
               key={rel.filename}
@@ -72,21 +73,45 @@ export const DownloadSection: React.FC = () => {
                 <div className="text-xs text-gray-500 font-mono pt-2">File: {rel.filename}</div>
               </div>
 
-              {/* Download CTA */}
+              {/* Download CTA -> GitHub Releases */}
               <a
                 href={rel.path}
-                download={rel.filename}
-                className={`w-full py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg ${
+                target="_blank"
+                rel="noreferrer"
+                className={`w-full py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all active:scale-95 shadow-lg ${
                   rel.recommended
                     ? 'bg-amber-400 hover:bg-amber-300 text-gray-950 shadow-amber-500/25'
                     : 'bg-gray-800 hover:bg-gray-750 text-white border border-gray-700 hover:border-gray-600'
                 }`}
               >
                 <Download size={18} className="stroke-[2.5]" />
-                <span>Download {rel.filename.includes('arm64') ? 'ARM64 APK' : 'Universal APK'}</span>
+                <span>Download on GitHub Releases</span>
+                <ExternalLink size={16} />
               </a>
             </div>
           ))}
+        </div>
+
+        {/* GitHub Direct Link Bar */}
+        <div className="mb-12 p-5 rounded-2xl bg-gray-950/90 border border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+              <Download size={16} />
+            </div>
+            <div className="text-xs text-gray-400">
+              <strong className="text-white block font-medium">GitHub Release Repository</strong>
+              Browse all tags, changelogs, and APK binaries on GitHub.
+            </div>
+          </div>
+          <a
+            href={GITHUB_RELEASES_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-900 hover:bg-gray-800 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-xs font-semibold transition shrink-0"
+          >
+            <span>View All GitHub Releases</span>
+            <ExternalLink size={13} />
+          </a>
         </div>
 
         {/* Official App Stores Section (Google, Apple, Huawei) */}
@@ -153,9 +178,9 @@ export const DownloadSection: React.FC = () => {
                   <div className="w-7 h-7 rounded-full bg-amber-400 text-gray-950 font-bold flex items-center justify-center text-xs">
                     1
                   </div>
-                  <div className="font-bold text-white text-base">Download the APK</div>
+                  <div className="font-bold text-white text-base">Get APK from GitHub</div>
                   <p className="text-xs text-gray-400 leading-relaxed">
-                    Click the <strong>Download ARM64 APK</strong> button above from your Android browser (Chrome, Brave, etc.).
+                    Tap the <strong>Download on GitHub Releases</strong> button to open our GitHub release page and download the APK directly.
                   </p>
                 </div>
 

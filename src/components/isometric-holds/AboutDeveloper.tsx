@@ -52,6 +52,16 @@ export const AboutDeveloper: React.FC = () => {
                   <span>LinkedIn Profile</span>
                   <ExternalLink size={13} className="text-blue-400/80" />
                 </a>
+
+                <a
+                  href="https://github.com/mcitp-mabdelhay/isometric-holds"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-sm font-semibold text-gray-200 border border-gray-700 transition"
+                >
+                  <ExternalLink size={16} className="text-amber-400" />
+                  <span>GitHub Repository</span>
+                </a>
               </div>
             </div>
           </div>

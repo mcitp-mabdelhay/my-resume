@@ -401,12 +401,14 @@ export const APP_FEATURES = [
   },
 ];
 
+export const GITHUB_RELEASES_URL = 'https://github.com/mcitp-mabdelhay/isometric-holds/releases';
+
 export const APK_RELEASES = [
   {
     type: 'ARM64 (Recommended)',
     subtitle: 'Optimized for modern Android phones (Android 9+)',
-    filename: 'isometric-holds-v2.3.0-arm64.apk',
-    path: '/isometric-holds/downloads/isometric-holds-v2.3.0-arm64.apk',
+    filename: 'isometric-holds-v2.3.1-arm64.apk',
+    path: 'https://github.com/mcitp-mabdelhay/isometric-holds/releases',
     size: '14.5 MB',
     badge: 'Fast & Lightweight',
     recommended: true,
@@ -414,8 +416,8 @@ export const APK_RELEASES = [
   {
     type: 'Universal APK',
     subtitle: 'Compatible with all Android chipsets (ARMv7, ARM64, x86)',
-    filename: 'isometric-holds-v2.3.0-universal.apk',
-    path: '/isometric-holds/downloads/isometric-holds-v2.3.0-universal.apk',
+    filename: 'isometric-holds-v2.3.1-universal.apk',
+    path: 'https://github.com/mcitp-mabdelhay/isometric-holds/releases',
     size: '27.3 MB',
     badge: 'Universal Compatibility',
     recommended: false,

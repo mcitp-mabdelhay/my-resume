@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUp, ShieldCheck, Heart } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -17,7 +18,7 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <div className="text-white font-bold text-sm">Isometric Holds</div>
-              <div className="text-gray-500">v2.3.0 Production • Offline First</div>
+              <div className="text-gray-500">v2.3.1 Production • Offline First</div>
             </div>
           </div>
 
@@ -38,6 +39,12 @@ export const Footer: React.FC = () => {
             <a href="#about" className="hover:text-amber-400 transition">
               About
             </a>
+            <Link to="/isometric-holds/privacy" className="hover:text-amber-400 transition">
+              Data Privacy Policy
+            </Link>
+            <Link to="/isometric-holds/terms-of-use" className="hover:text-amber-400 transition">
+              Terms of Use
+            </Link>
           </div>
 
           {/* Back to top */}
@@ -54,7 +61,12 @@ export const Footer: React.FC = () => {
           <p>© {new Date().getFullYear()} Isometric Holds. Created by Mohammed Abdelhay. All rights reserved.</p>
           <div className="flex items-center gap-2 text-gray-400">
             <ShieldCheck size={14} className="text-emerald-400" />
-            <span>100% Privacy Respecting • Zero Third-Party Analytics</span>
+            <Link
+              to="/isometric-holds/privacy"
+              className="hover:text-emerald-400 transition underline underline-offset-4"
+            >
+              100% Privacy & Data Protection Safeguarded • View Data Privacy Policy
+            </Link>
           </div>
         </div>
       </div>

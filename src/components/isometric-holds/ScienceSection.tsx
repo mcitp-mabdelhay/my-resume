@@ -50,7 +50,7 @@ export const ScienceSection: React.FC = () => {
                   <BookCheck size={14} className="text-amber-400" />
                   <span>Peer-reviewed biomechanics</span>
                 </span>
-                <span className="font-mono text-[11px] text-gray-500">IsoProtocol v2.3</span>
+                <span className="font-mono text-[11px] text-gray-500">IsoProtocol v2.3.1</span>
               </div>
             </div>
           ))}
